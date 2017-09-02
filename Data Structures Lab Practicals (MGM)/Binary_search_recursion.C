@@ -71,31 +71,3 @@ Enter the element you want to search for: 53
 The element 53 doesnot exixt in the list.                                       
 
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                

@@ -56,31 +56,3 @@ Move No: 13  | Moved the disc 1 from A to B
 Move No: 14  | Moved the disc 2 from A to C
 Move No: 15  | Moved the disc 1 from B to C
 */
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-
