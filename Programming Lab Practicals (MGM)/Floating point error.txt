@@ -1,0 +1,45 @@
+SOURCE: https://www.indiabix.com/c-programming/floating-point-issues/discussion-136
+1. 	
+Point out the error in the following program.
+#include<stdio.h>
+int main()
+{
+    struct emp
+    {
+        char name[20];
+        float sal;
+    };
+    struct emp e[10];
+    int i;
+    for(i=0; i<=9; i++)
+        scanf("%s %f", e[i].name, &e[i].sal);
+    return 0;
+}
+[A].	Suspicious pointer conversion
+[B].	
+Floating point formats not linked (Run time error)	@
+[C].	Cannot use scanf() for structures
+[D].	Strings cannot be nested inside structures
+Answer: Option B
+
+Explanation:
+
+Compile and Run the above program in Turbo C:
+
+C:\>myprogram.exe
+Sundar
+2555.50
+scanf : floating point formats not linked
+Abnormal program termination
+The program terminates abnormally at the time of entering the float value for e[i].sal.
+
+Solution:
+
+Just add the following function in your program. It will force the compiler to include required libraries for handling floating point linkages.
+
+static void force_fpf() /* A dummy function */
+{
+    float x, *y; /* Just declares two variables */
+    y = &x;      /* Forces linkage of FP formats */
+    x = *y;      /* Suppress warning message about x */
+}
