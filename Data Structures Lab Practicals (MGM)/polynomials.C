@@ -2,6 +2,8 @@
 #include<conio.h>
 #include<stdlib.h>
 
+void display(void);
+
 struct node
 {
   int coef, expo;
@@ -22,7 +24,7 @@ struct node* newnode(int num1, int num2)
 
 void insert_p1(int num1, int num2)
 {
-  struct node *temp=newnode(int num1, int num2);
+  struct node *temp=newnode(num1,num2);
   if(p1==NULL)
     {
        p1=temp;
@@ -40,7 +42,7 @@ void insert_p1(int num1, int num2)
 
 void insert_p2(int num1, int num2)
 {
-   struct node *p2=newnode(int num1, int num2);
+   struct node *temp=newnode(num1,num2);
   if(p2==NULL)
     {
        p2=temp;
@@ -58,7 +60,7 @@ void insert_p2(int num1, int num2)
 
 void insert_sum(int num1, int num2)
 {
-  struct node *temp=newnode(int num1, int num2);
+  struct node *temp=newnode(num1,num2);
   if(sum==NULL)
     {
        sum=temp;
@@ -75,60 +77,55 @@ void insert_sum(int num1, int num2)
   }
 }
 
-
 void addition()
 {
-int k;
-while(p1!==NULL && p2!==NULL)
-   {
-     if(p1->num2==p2->num2)
+  int k;
+  while(p1!=NULL && p2!=NULL)
+  {
+     if(p1->expo==p2->expo)
      {
-        k=p1->num1+p2->num1;
-        insert_sum(k,p1->num2);
-        p1=p1->next;
-        p2=p2->next;
-        addition();
+	k=p1->coef+p2->coef;
+	insert_sum(k,p1->expo);
+	p1=p1->next;
+	p2=p2->next;
+	addition();
      }
 
-     else if(p1->num2<p2->num2)
+      if(p1->expo<p2->expo)
      {
-       insert_sum(p2->num1,p2->num2);
+       insert_sum(p2->coef,p2->expo);
        p2=p2->next;
        addition();
      }
 
-     else if(p1->num2>p2->num2)
-    {
-       insert_sum(p1->num1,p1->num2);
+     if(p1->expo>p2->expo)
+     {
+       insert_sum(p1->coef,p1->expo);
        p1=p1->next;
        addition();
-    }
-
-     else if(p1==NULL)
-    {
-      while(p2!==NULL)
-      {
-        insert_sum(p2->num1,p2->num2);
-        p2=p2->next;
-      }
+     }
+     if(p1==NULL)
+     {
+      while(p2!=NULL)
+       {
+	insert_sum(p2->coef,p2->expo);
+	p2=p2->next;
+       }
      addition();
-    }
-  
-     else if(p2==NULL)
-    {
-      while(p1!==NULL)
+     }
+
+     if(p2==NULL)
+     {
+      while(p1!=NULL)
       {
-        insert_sum(p1->num1,p1->num2);
-        p1=p1->next;
+	insert_sum(p1->coef,p1->expo);
+	p1=p1->next;
       }
       addition();
-    }
+     }
   }
- else
-  {
-     display();
-   }
 }
+
 
 void display()
 {
@@ -136,50 +133,49 @@ void display()
  printf("\nHead(%d)", sum);
  while(temp!=NULL)
  {
-   printf("-->[%d|%d(%d)|%d]", temp->num1,temp->num2,temp,temp->next);
+   printf("-->[%d|%d(%d)|%d]", temp->coef,temp->expo,temp,temp->next);
    temp=temp->next;
  }
  printf("\n");
+ p1=p2=sum=NULL;
+ printf("\nThe pointers are now reset to NULL. New values can be entered. \n");
 }
+
+void initialize_poly()
+{
+		   int i,n;
+		   printf("\nEnter the no. of terms of Poly-1: ");
+		   scanf("%d", &n);
+		   for(i=0;i<n;i++)
+		   {
+		      printf("Enter Coefficient and Exponent: ");
+		      scanf("%d %d", &num1, &num2);
+		      insert_p1(num1,num2);
+		   }
+		   printf("\nEnter the no. of terms of Poly-2: ");
+		   scanf("%d", &n);
+		   for(i=0;i<n;i++)
+		   {
+		      printf("Enter Coefficient and Exponent: ");
+		      scanf("%d %d", &num1, &num2);
+		      insert_p2(num1,num2);
+		   }
+
+}
+
 
 int num1,num2;
 void main()
 {
-  int ch, i,n;
+  int ch;
   clrscr();
-  do
+   do
   {
-  printf("\t=====MENU=======\n");
-  printf("\t1] Addition\n");
-  printf("\t2] Multiplication\n");
-  printf("\t3] Evaluation\n");
-  printf("Enter your choice: ");
-  scanf("%d",&ch);
-    switch(ch)
-    {
-      case 1:
-                   printf("\nEnter the no. of terms of Poly-1: ");
-	scanf("%d", &n);
-                   for(i=0;i<n;i++)
-                   {
-                      printf("Enter Coefficient and Exponent: ");
-                      scanf("%d, %d", &num1, &num2);
-                      insert_p1(num1,num2);
-                   }
-                  printf("\nEnter the no. of terms of Poly-2: ");
-	scanf("%d", &n);
-                   for(i=0;i<n;i++)
-                   {
-                      printf("Enter Coefficient and Exponent: ");
-                      scanf("%d, %d", &num1, &num2);
-                      insert_p2(num1,num2);
-                   }
-                 }
-                     addition();
-	   break;
-        case 2: 
-        case 3: break;               
-    }
+   initialize_poly();
+   addition();
+   display();
+   printf("Continue? (1/0): ");
+   scanf("%d", &ch);
   }
   while(ch);
   getch();
