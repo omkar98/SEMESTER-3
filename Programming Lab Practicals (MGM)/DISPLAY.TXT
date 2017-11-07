@@ -1,0 +1,11 @@
+void display(int num)
+{
+ if(num>0)
+   printf("\nNumber is positive.");
+ else if (num<0)
+   printf("\nNumber is negative");
+ else if(num==0)
+   printf("\nYou have entered zero");
+ else
+   printf("Please enter a valid number");
+}
