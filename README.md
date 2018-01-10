@@ -15,9 +15,9 @@ Please Note:
 9. Write a program for recursive solution of problem of Tower of Hanoi.
 10. Write a program for the Fibonacci series using recursion.
 11. Write a menu driven program to perform following operations on singly linked list:
-     create, insert(from beginning and end), delete(from beginning and end) and display the elements 
+create, insert(from beginning and end), delete(from beginning and end) and display the elements 
 12. Write a menu driven program to perform following operations on circular linked list:
-     create, insert(from beginning and end), delete(from beginning and end) and display the elements.
+create, insert(from beginning and end), delete(from beginning and end) and display the elements.
 13. Represent polynomial as a circularly linked list and write a menu driven program to perform addition.
 14. Implementation of binary tree data structure and perform pre-order, post-order and in-order traversals.
 15. Write a program for implementation of graph data structure using adjacency list representation.
